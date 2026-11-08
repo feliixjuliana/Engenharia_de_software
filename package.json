@@ -1,0 +1,105 @@
+{
+    "name":  "legacy-ai",
+    "displayName":  "Legacy AI",
+    "description":  "Apoio à compreensão e manutenção de sistemas legados.",
+    "version":  "0.2.0",
+    "private":  true,
+    "engines":  {
+                    "vscode":  "^1.85.0"
+                },
+    "categories":  [
+                       "Other"
+                   ],
+    "main":  "./out/extension.js",
+    "capabilities":  {
+                         "untrustedWorkspaces":  {
+                                                     "supported":  "limited",
+                                                     "description":  "A apresentação e a seleção de pasta estão disponíveis; a análise estrutural exige workspace confiável."
+                                                 },
+                         "virtualWorkspaces":  false
+                     },
+    "contributes":  {
+                        "commands":  [
+                                         {
+                                             "command":  "legacyAi.open",
+                                             "title":  "Abrir apresentação",
+                                             "category":  "Legacy AI"
+                                         },
+                                         {
+                                             "command":  "legacyAi.selectWorkspace",
+                                             "title":  "Selecionar projeto",
+                                             "category":  "Legacy AI"
+                                         },
+                                         {
+                                             "command":  "legacyAi.analyze",
+                                             "title":  "Analisar estrutura do projeto",
+                                             "category":  "Legacy AI"
+                                         },
+                                         {
+                                             "command":  "legacyAi.showInventory",
+                                             "title":  "Mostrar último inventário",
+                                             "category":  "Legacy AI"
+                                         }
+                                     ],
+                        "configuration":  {
+                                              "title":  "Legacy AI",
+                                              "properties":  {
+                                                                 "legacyAi.maxFiles":  {
+                                                                                           "type":  "integer",
+                                                                                           "default":  2000,
+                                                                                           "minimum":  1,
+                                                                                           "maximum":  10000,
+                                                                                           "description":  "Quantidade máxima de arquivos aceitos.",
+                                                                                           "scope":  "resource"
+                                                                                       },
+                                                                 "legacyAi.maxFileBytes":  {
+                                                                                               "type":  "integer",
+                                                                                               "default":  262144,
+                                                                                               "minimum":  1,
+                                                                                               "maximum":  4194304,
+                                                                                               "description":  "Tamanho máximo por arquivo, em bytes.",
+                                                                                               "scope":  "resource"
+                                                                                           },
+                                                                 "legacyAi.maxTotalBytes":  {
+                                                                                                "type":  "integer",
+                                                                                                "default":  16777216,
+                                                                                                "minimum":  1,
+                                                                                                "maximum":  67108864,
+                                                                                                "description":  "Orçamento de leitura em bytes, incluindo regras .gitignore e arquivos rejeitados após leitura.",
+                                                                                                "scope":  "resource"
+                                                                                            },
+                                                                 "legacyAi.maxEntries":  {
+                                                                                             "type":  "integer",
+                                                                                             "default":  20000,
+                                                                                             "minimum":  1,
+                                                                                             "maximum":  100000,
+                                                                                             "description":  "Quantidade máxima de entradas visitadas, incluindo exclusões.",
+                                                                                             "scope":  "resource"
+                                                                                         },
+                                                                 "legacyAi.maxDepth":  {
+                                                                                           "type":  "integer",
+                                                                                           "default":  32,
+                                                                                           "minimum":  1,
+                                                                                           "maximum":  128,
+                                                                                           "description":  "Profundidade máxima de diretórios.",
+                                                                                           "scope":  "resource"
+                                                                                       }
+                                                             }
+                                          }
+                    },
+    "scripts":  {
+                    "compile":  "tsc -p ./",
+                    "check":  "tsc -p ./ --noEmit",
+                    "watch":  "tsc -watch -p ./",
+                    "vscode:prepublish":  "npm run compile",
+                    "test":  "npm run compile \u0026\u0026 node --test test/*.test.cjs"
+                },
+    "devDependencies":  {
+                            "@types/node":  "^20.19.43",
+                            "@types/vscode":  "1.85.0"
+                        },
+    "dependencies":  {
+                         "ignore":  "^7.0.5",
+                         "typescript":  "~5.9.3"
+                     }
+}

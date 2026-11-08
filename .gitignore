@@ -1,0 +1,40 @@
+# Dependencias e arquivos gerados
+node_modules/
+out/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+*.vsix
+*.log
+
+# Segredos e configuracoes locais
+.env
+.env.*
+!.env.example
+.npmrc
+.pypirc
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+id_rsa*
+id_ed25519*
+secrets/
+credentials/
+secret.*
+secrets.*
+credentials.*
+.ssh/
+.aws/
+.azure/
+
+# Preferencias pessoais; preservar launch.json e tasks.json
+.vscode/settings.json
+.vscode/*.local.json
+*.code-workspace
+.idea/
+.DS_Store
+Thumbs.db

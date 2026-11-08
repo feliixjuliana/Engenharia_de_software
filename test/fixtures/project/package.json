@@ -1,0 +1,6 @@
+{
+  "name": "legacy-example",
+  "main": "src/index.ts",
+  "dependencies": { "express": "^4.21.0" },
+  "devDependencies": { "typescript": "~5.9.3" }
+}
