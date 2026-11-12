@@ -21,6 +21,21 @@
     "contributes":  {
                         "commands":  [
                                          {
+                                             "command": "legacyAi.configureGeminiKey",
+                                             "title": "Configurar chave do Gemini",
+                                             "category": "Legacy AI"
+                                         },
+                                         {
+                                             "command": "legacyAi.removeGeminiKey",
+                                             "title": "Remover chave do Gemini",
+                                             "category": "Legacy AI"
+                                         },
+                                         {
+                                             "command": "legacyAi.clearGeminiCache",
+                                             "title": "Limpar cache das explicações do Gemini",
+                                             "category": "Legacy AI"
+                                         },
+                                         {
                                              "command":  "legacyAi.open",
                                              "title":  "Abrir apresentação",
                                              "category":  "Legacy AI"
@@ -44,6 +59,34 @@
                         "configuration":  {
                                               "title":  "Legacy AI",
                                               "properties":  {
+                                                                 "legacyAi.gemini.model": {
+                                                                     "type": "string", "default": "", "scope": "application",
+                                                                     "description": "Identificador do modelo Gemini com faixa gratuita confirmada no seu AI Studio. Não há seleção automática nem fallback."
+                                                                 },
+                                                                 "legacyAi.gemini.maxRequests": {
+                                                                     "type": "integer", "default": 5, "minimum": 1, "maximum": 100, "scope": "application",
+                                                                     "description": "Orçamento local por execução, aplicado separadamente às tentativas de contagem e às tentativas de geração."
+                                                                 },
+                                                                 "legacyAi.gemini.maxInputTokens": {
+                                                                     "type": "integer", "default": 8000, "minimum": 1, "maximum": 100000, "scope": "application",
+                                                                     "description": "Orçamento local de tokens de entrada por chamada, incluindo instruções."
+                                                                 },
+                                                                 "legacyAi.gemini.maxOutputTokens": {
+                                                                     "type": "integer", "default": 1500, "minimum": 1, "maximum": 16000, "scope": "application",
+                                                                     "description": "Orçamento local de tokens de saída por chamada. Confira o limite do modelo."
+                                                                 },
+                                                                 "legacyAi.gemini.requestsPerMinute": {
+                                                                     "type": "integer", "default": 0, "minimum": 0, "maximum": 1000, "scope": "application",
+                                                                     "description": "Informe a cota de requisições por minuto do AI Studio. Zero significa não configurada e impede preparar as explicações; o inventário local permanece parcial."
+                                                                 },
+                                                                 "legacyAi.gemini.requestsPerDay": {
+                                                                     "type": "integer", "default": 0, "minimum": 0, "maximum": 100000, "scope": "application",
+                                                                     "description": "Informe a cota de requisições por dia do AI Studio. Zero significa não configurada."
+                                                                 },
+                                                                 "legacyAi.gemini.inputTokensPerMinute": {
+                                                                     "type": "integer", "default": 0, "minimum": 0, "maximum": 10000000, "scope": "application",
+                                                                     "description": "Informe a cota de tokens de entrada por minuto do AI Studio. Zero significa não configurada."
+                                                                 },
                                                                  "legacyAi.maxFiles":  {
                                                                                            "type":  "integer",
                                                                                            "default":  2000,
